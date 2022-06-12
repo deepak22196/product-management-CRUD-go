@@ -1,0 +1,41 @@
+.signin-parent {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(240, 255, 255, 0.804);
+  padding-top: 10vw;
+  padding-left: 35vw;
+}
+
+.signin-form-container {
+  width: 30vw;
+  height: 15vw;
+  border: 1.5px solid black;
+  border-radius: 8px;
+}
+
+.signin-heading {
+  height: 3vw;
+  text-align: center;
+  text-decoration: underline;
+  font-size: 1.5vw;
+}
+
+.signin-form-container input {
+  margin-left: 5vw;
+  margin-top: 0.5vw;
+  margin-bottom: 1vw;
+  font-size: 1.5vw;
+}
+
+.signin-submit {
+  display: block;
+  font-size: 1.2vw;
+  cursor: pointer;
+  margin-left: 12vw;
+  margin-top: 1vw;
+}
+
+.signup-option {
+  margin-top: 2vw;
+  margin-left: 7vw;
+}

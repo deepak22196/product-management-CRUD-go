@@ -1,0 +1,29 @@
+.form-parent {
+  margin-left: 30vw;
+  margin-top: 5vw;
+  border: 1px solid black;
+  width: 40vw;
+  height: 32vw;
+  border-radius: 10px;
+  /* text-align: center; */
+}
+
+.form-parent input {
+  display: inline-block;
+  width: 30vw;
+  height: 3vw;
+  margin-top: 2vw;
+  margin-left: 5vw;
+}
+.form-heading {
+  text-align: center;
+  text-decoration: underline;
+}
+
+.form-submit {
+  display: block;
+  margin-top: 1vw;
+  margin-left: 17vw;
+  cursor: pointer;
+  padding: 0.5vw;
+}

@@ -1,0 +1,46 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.signup-parent {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(240, 255, 255, 0.804);
+  padding-top: 10vw;
+  padding-left: 35vw;
+}
+
+.signup-form-container {
+  width: 30vw;
+  height: 20vw;
+  border: 1.5px solid black;
+  border-radius: 8px;
+}
+
+.signup-heading {
+  height: 3vw;
+  text-align: center;
+  text-decoration: underline;
+  font-size: 1.5vw;
+}
+
+.signup-form-container input {
+  margin-left: 5vw;
+  margin-top: 0.5vw;
+  margin-bottom: 1vw;
+  font-size: 1.5vw;
+}
+
+.signup-submit {
+  display: block;
+  font-size: 1.2vw;
+  cursor: pointer;
+  margin-left: 12vw;
+  margin-top: 0.5vw;
+}
+
+.signin-option {
+  margin-top: 2vw;
+  margin-left: 7vw;
+}

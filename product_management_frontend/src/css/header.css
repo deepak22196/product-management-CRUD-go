@@ -1,0 +1,11 @@
+.header {
+  height: 5vw;
+  width: 100vw;
+  background-color: cornflowerblue;
+}
+.logout {
+  padding: 0.5vw;
+  margin-top: 0.5vw;
+  margin-left: 90vw;
+  cursor: pointer;
+}
