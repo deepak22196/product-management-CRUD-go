@@ -9,12 +9,17 @@ import (
 func Router() *mux.Router {
 	router := mux.NewRouter()
 
-	
+	// setting up routes
 
-	router.HandleFunc("/register",controllers.CreateNewUser).Methods("POST")
-	
+	// public routes login and signup
 
+	router.HandleFunc("/register",controllers.CreateNewUser).Methods("POST") 
+	
 	router.HandleFunc("/login",controllers.LoginUser).Methods("POST")
+
+
+
+	// authorized routes with middleware
 
 	router.HandleFunc("/addProduct",controllers.IsAuthorized(controllers.AddNewProduct)).Methods("POST")
 

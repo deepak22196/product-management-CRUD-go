@@ -19,6 +19,9 @@ func main(){
 	r:=router.Router()
 	
 	fmt.Println("router done")
+
+	// setting up cors options
+	
 	origins := handlers.AllowedOrigins([]string{"*"})
 	headers:=handlers.AllowedHeaders([]string{"X-Requested-With","Content-Type","Authorization","token"})
 	methods := handlers.AllowedMethods([]string{"GET", "HEAD", "POST", "PUT","DELETE" ,"OPTIONS"})
@@ -30,8 +33,7 @@ func main(){
 	
 	log.Fatal(http.ListenAndServe(":"+port,handlers.CORS(origins,headers,methods)(r)))
 	
-	fmt.Println("dfd")
-	fmt.Println("listening at port 8000")
+	
 
 }
 //

@@ -8,6 +8,7 @@ import (
 	// "go.mongodb.org/mongo-driver/mongo/options"
 )
 
+// adding creator field on product to use in authorization
 type Product struct{
 	Id primitive.ObjectID `json:"_id,omitempty" bson:"_id,omitempty"`
 	Brand string `json:"brand,omitempty" bson:"brand,omitempty"`
@@ -15,5 +16,5 @@ type Product struct{
 	Color string `json:"color,omitempty" bson:"color,omitempty"`
 	Hardisk string `json:"hardisk,omitempty" bson:"hardisk,omitempty"`
 	Os string `json:"os,omitempty" bson:"os,omitempty"`
-	Creator string `json:"creator,omitempty" bson:"creator,omitempty"`
+	Creator string `json:"creator,omitempty" bson:"creator,omitempty"`   
 }

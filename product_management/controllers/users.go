@@ -16,24 +16,29 @@ import (
 	"golang.org/x/crypto/bcrypt"
 )
 
-  var Secretkey string = "secretkeyjwt"
-type Authentication struct {
+// setting up jwt secret key
+  var Secretkey string = "secretkeyjwt"        
+
+// struct for decoding login details
+  type Authentication struct {
 	Email    string `json:"email"`
 	Password string `json:"password"`
 }
 
+// struct for setting jwt structure
 type Token struct {
 	Email       string `json:"email"`
 	TokenString string `json:"token"`
 }
 
+// struct for setting custom error structure
 type Error struct {
 	IsError bool   `json:"isError"`
 	Message string `json:"message"`
 }
 //
 //
-//
+//method to set error
 func SetError(err Error, message string) Error {
 	err.IsError = true
 	err.Message = message
@@ -52,6 +57,7 @@ func CheckPasswordHash(password, hash string) bool {
 	return err == nil
 }
 
+// function to generate new jwt token
 func GenerateJWT(email string) (string, error) {
 	var mySigningKey = []byte(Secretkey)
 	token := jwt.New(jwt.SigningMethodHS256)
@@ -73,7 +79,7 @@ func GenerateJWT(email string) (string, error) {
 //
 //
 //
-
+// function to create new user on register route
 func CreateNewUser(w http.ResponseWriter,r *http.Request) {
 	w.Header().Set("Content-Type","application/json")
 	w.Header().Set("Allow-Control-Allow-Methods","POST")
@@ -83,7 +89,7 @@ func CreateNewUser(w http.ResponseWriter,r *http.Request) {
 		log.Fatal(err)
 	}
 
-	//
+	//checking if email id already exist in database
 	var existingUser models.User
 	database.UserCollection.FindOne(context.Background(),bson.M{"email":newUser.Email}).Decode(&existingUser)
 
@@ -103,7 +109,7 @@ func CreateNewUser(w http.ResponseWriter,r *http.Request) {
 
 
 
-	//
+	//hashing the password for new user and inserting in db
 
 	newUser.Password, _ = GeneratehashPassword(newUser.Password)
 
@@ -119,7 +125,7 @@ func CreateNewUser(w http.ResponseWriter,r *http.Request) {
 //
 //
 
-
+// function to check login details and provide the token after successfull login
 func LoginUser(w http.ResponseWriter,r *http.Request){
 	w.Header().Set("Content-Type","application/json")
 	w.Header().Set("Allow-Control-Allow-Methods","POST")
@@ -129,6 +135,7 @@ func LoginUser(w http.ResponseWriter,r *http.Request){
 		log.Fatal(err)
 	}
 
+	// checking if email id is there in database or not
 	var user models.User
 	database.UserCollection.FindOne(context.Background(),bson.M{"email":authDetails.Email}).Decode(&user)
 	if user.Email==""{
@@ -143,6 +150,8 @@ func LoginUser(w http.ResponseWriter,r *http.Request){
 		return
 		
 	}
+
+	// comparing the inserted password with hashed password
 	check := CheckPasswordHash(authDetails.Password, user.Password)
 	if !check{
 		w.WriteHeader(http.StatusBadRequest)
@@ -156,6 +165,7 @@ func LoginUser(w http.ResponseWriter,r *http.Request){
 		return
 	}
 
+	// if everything fine, distributing token as response
 	validToken, err := GenerateJWT(authDetails.Email)
 	if err != nil {
 		var err Error

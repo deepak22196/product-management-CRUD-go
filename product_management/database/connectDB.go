@@ -11,6 +11,8 @@ import (
 
 const connectionString = "mongodb+srv://Deepak:dreamers111@cluster0.ljtwi.mongodb.net/?retryWrites=true&w=majority"
 
+// setting up database name and two collections for user and products
+
  const dbName="product_management"
 var UserCollection *mongo.Collection
 var ProductCollection *mongo.Collection
@@ -32,7 +34,10 @@ if err!=nil{
 
 fmt.Println("database connected successfully")
 Product_management_db:=client.Database(dbName)
-UserCollection=Product_management_db.Collection("users")
+
+// getting references for the collections created
+
+UserCollection=Product_management_db.Collection("users")    
 ProductCollection=Product_management_db.Collection("products")
 // fmt.Printf("%T%T",UserCollection,ProductCollection)
 fmt.Println("connect db completed")
